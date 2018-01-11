@@ -1,10 +1,13 @@
 __kitchen_instance_list () {
+  YAML=${KITCHEN_YAML:-.kitchen.yml}
+  LIST=${YAML}.list
+
   # cache to .kitchen.list.yml
-  if [[ ${KITCHEN_YAML:-.kitchen.yml} -nt .kitchen.list.yml || .kitchen.local.yml -nt .kitchen.list.yml ]]; then
+  if [[ ${YAML} -nt ${LIST} ]]; then
     # update list if config has updated
-    kitchen list --bare > .kitchen.list.yml
+    kitchen list --bare > ${LIST}
   fi
-  cat .kitchen.list.yml
+  cat ${LIST}
 }
 
 __kitchen_options () {
