@@ -1,6 +1,6 @@
 __kitchen_instance_list () {
   # cache to .kitchen.list.yml
-  if [[ .kitchen.yml -nt .kitchen.list.yml || .kitchen.local.yml -nt .kitchen.list.yml ]]; then
+  if [[ ${KITCHEN_YAML:-.kitchen.yml} -nt .kitchen.list.yml || .kitchen.local.yml -nt .kitchen.list.yml ]]; then
     # update list if config has updated
     kitchen list --bare > .kitchen.list.yml
   fi
