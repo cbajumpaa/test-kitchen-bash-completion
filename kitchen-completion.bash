@@ -1,8 +1,8 @@
 __kitchen_instance_list () {
   YAML=${KITCHEN_YAML:-.kitchen.yml}
-  LIST=.${YAML}.list
+  LIST=${YAML}.list
 
-  # cache to .${YAML}.list
+  # cache to ${YAML}.list
   if [[ ${YAML} -nt ${LIST} ]]; then
     # update list if config has updated
     kitchen list --bare > ${LIST}
